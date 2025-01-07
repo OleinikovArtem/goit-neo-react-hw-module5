@@ -13,11 +13,6 @@
   box-sizing: border-box;
 }
 
-ul,
-ol {
-  list-style: none;
-}
-
 body {
   margin: 0;
   min-width: 320px;
