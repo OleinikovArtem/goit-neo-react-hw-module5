@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import MovieList from '../../components/MovieList'
 import Api from '../../api'
 
 function HomePage() {
@@ -16,13 +16,7 @@ function HomePage() {
   return (
     <main className='container'>
       <h1>Trending today</h1>
-      <ul>
-        {trendingMovies.map(movie => (
-          <li key={movie.id}>
-            <NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink>
-          </li>
-        ))}
-      </ul>
+      <MovieList movies={trendingMovies} />
     </main>
   )
 }
