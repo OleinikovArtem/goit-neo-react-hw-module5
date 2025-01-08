@@ -1,0 +1,34 @@
+.cast {
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 600px) {
+  .cast {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cast {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cast {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cast img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.cast li {
+  text-align: center;
+  list-style: none;
+}

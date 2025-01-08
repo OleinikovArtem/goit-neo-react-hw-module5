@@ -8,14 +8,13 @@ function HomePage() {
   useEffect(() => {
     const getData = async () => {
       const data = await Api.getTrendingMovies()
-      console.log(data)
-      setTrendingMovies(data.results)
+      setTrendingMovies(data.results || [])
     }
     getData()
   }, [])
 
   return (
-    <main>
+    <main className='container'>
       <h1>Trending today</h1>
       <ul>
         {trendingMovies.map(movie => (

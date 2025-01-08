@@ -1,0 +1,18 @@
+.back {
+  margin-top: 24px;
+}
+
+.img {
+  width: 500px;
+  min-width: 300px;
+  margin-right: 24px;
+}
+
+.movie {
+  display: flex;
+  padding: 24px 0;
+}
+
+.border {
+  border-bottom: 1px solid #ccc;
+}

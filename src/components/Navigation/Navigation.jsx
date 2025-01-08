@@ -9,7 +9,7 @@ const buildLinkClass = ({ isActive }) => clsx(styles.link, isActive && styles.ac
 
 function Navigation() {
   return (
-    <header className={styles.header}>
+    <header className={clsx('container', styles.header)}>
       <nav>
         <NavLink to={ROUTES.home} className={buildLinkClass}>Home</NavLink>
         <NavLink to={ROUTES.movies} className={buildLinkClass}>Movies</NavLink>
