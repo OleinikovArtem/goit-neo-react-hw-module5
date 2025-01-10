@@ -9,6 +9,8 @@ function MovieDetailsPage() {
   const navigate = useNavigate()
   const { movieId } = useParams()
   const [movie, setMovie] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleGoBack = () => {
     navigate(-1)
@@ -16,16 +18,25 @@ function MovieDetailsPage() {
 
   useEffect(() => {
     if (!movieId) return
+    setIsLoading(true)
 
     const getData = async () => {
-      const data = await Api.getMovieDetails(movieId)
-      setMovie(data)
+      try {
+        const data = await Api.getMovieDetails(movieId)
+        setMovie(data)
+      } catch (error) {
+        console.error('Error fetching data: ', error)
+        setError('Something went wrong. Try again later.')
+      } finally {
+        setIsLoading(false)
+      }
     }
 
     getData()
   }, [movieId])
 
-  if (!movie) return <p>Loading...</p>
+  if (isLoading || !movie) return <main className='container'><p>Loading...</p></main>
+  if (error) return <main className='container'><p>{error}</p></main>
 
   const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
   const title = `${movie.title} ${new Date(movie.release_date).getFullYear()}`

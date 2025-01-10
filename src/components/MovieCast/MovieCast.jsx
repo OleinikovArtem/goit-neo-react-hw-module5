@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styles from './MovieCast.module.css'
 import Api from '../../api'
 
 function MovieCast() {
-  const location = useLocation()
+  const { movieId } = useParams()
   const [cast, setCast] = useState([])
 
   useEffect(() => {
     const getData = async () => {
-      const data = await Api.getMovieCredits(location.state)
+      const data = await Api.getMovieCredits(movieId)
       setCast(data.cast)
     }
 
     getData()
-  }, [location.state])
+  }, [movieId])
 
   return (
     <ul className={styles.cast}>

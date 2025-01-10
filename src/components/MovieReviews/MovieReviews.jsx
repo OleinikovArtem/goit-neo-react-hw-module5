@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Api from '../../api'
 
 function MovieReviews() {
-  const location = useLocation()
+  const { movieId } = useParams()
   const [reviews, setReviews] = useState([])
 
   useEffect(() => {
     const getData = async () => {
-      const data = await Api.getMovieReviews(location.state)
+      const data = await Api.getMovieReviews(movieId)
       setReviews(data.results)
     }
 
     getData()
-  }, [location.state])
+  }, [movieId])
 
   if (reviews.length === 0) return <p>We don&apos;t have any reviews for this moment</p>
 
