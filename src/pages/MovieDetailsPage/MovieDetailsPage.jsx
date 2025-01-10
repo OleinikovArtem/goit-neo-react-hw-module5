@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Link, Outlet, useParams, useNavigate } from 'react-router-dom'
+import { useEffect, useState, useRef } from 'react'
+import { Link, Outlet, useParams, useNavigate, useLocation } from 'react-router-dom'
 import Api from '../../api'
 
 import styles from './MovieDetailsPage.module.css'
@@ -12,8 +12,11 @@ function MovieDetailsPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
 
+  const location = useLocation();
+  const backLink = useRef(location.state ?? '/movies');
+
   const handleGoBack = () => {
-    navigate(-1)
+    navigate(backLink.current)
   }
 
   useEffect(() => {
